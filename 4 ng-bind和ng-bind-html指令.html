@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-bind</title>
+</head>
+<body ng-app="mm" ng-init="name='<h1>这是h1标签</h1>'">
+    <div>表达式：{{name}}</div>
+    <div>
+        ng-bind：
+        <div ng-bind="name"></div>
+    </div>
+    <div>
+        ng-bind-html：
+        <div ng-bind-html="name"></div>
+    </div>
+</body>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<!-- 引用angular-sanitize -->
+<script>
+    // 直接只用ng-bind-html会报错，必须加入检测安全的模块：angular-sanitize
+    // 首先使用bower安装：bower install angular-sanitize --save
+    // 再引用angular-sanitize.
+    // 最后新建一个模块依赖angular-sanitize，模块名就是ngSanitize
+    angular.module('mm', ['ngSanitize']);
+    // 这样效果很明显。
+
+</script>
+</html>
