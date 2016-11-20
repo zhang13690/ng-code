@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>执行多个ng-app</title>
+</head>
+<body>
+    <div ng-app="mod1" ng-controller="ctrl1">
+        <input type="button" ng-click="do1()" value="test1">
+    </div>
+
+    <div ng-app="mod2" ng-controller="ctrl2">
+        <input type="button" ng-click="do2()" value="test2">
+    </div>
+</body>
+<script src="bower_components/angular/angular.js"></script>
+<script>
+    // 模块1有do1方法
+    var mod1 = angular.module('mod1', []);
+    mod1.controller('ctrl1', ['$scope', function ($scope) {
+        $scope.do1 = function () {
+            alert('do1');
+        };
+    }]);
+    // 模块2有do2方法
+    var mod2 = angular.module('mod2', []);
+    mod2.controller('ctrl2', ['$scope', function ($scope) {
+        $scope.do2 = function () {
+            alert('do2');
+        };
+    }]);
+
+    // 但是第二个按钮点击之后无反应。我们主要手动设置执行多个ng-app。
+    // 手动的让第二个div被mod2管理，用bootstrap方法
+    angular.bootstrap(document.querySelector('[ng-app="mod2"]'), ['mod2']);
+</script>
+</html>

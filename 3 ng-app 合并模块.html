@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="modJoin">
+<!-- 这里引用通用的模块 -->
+<head>
+    <meta charset="UTF-8">
+    <title>合并模块</title>
+</head>
+<body>
+    <div ng-controller="ctrl1">
+        <input type="button" ng-click="do1()" value="test1">
+    </div>
+    <div ng-controller="ctrl2">
+        <input type="button" ng-click="do2()" value="test2">
+    </div>
+</body>
+<script src="bower_components/angular/angular.js"></script>
+<script>
+    // 模块1
+    var mod1 = angular.module('mod1', []);
+    mod1.controller('ctrl1', ['$scope', function ($scope) {
+        $scope.do1 = function () {
+            alert('do1');
+        };
+    }]);
+    // 模块2
+    var mod2 = angular.module('mod2', []);
+    mod2.controller('ctrl2', ['$scope', function ($scope) {
+        $scope.do2 = function () {
+            alert('do2');
+        };
+    }]);
+    // 合并是通用的做法，新建一个模块依赖于上面的模块即可。
+    angular.module('modJoin', ['mod1', 'mod2']);
+</script>
+</html>
