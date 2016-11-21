@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>高级综合</title>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+<body ng-app="myApp" ng-controller="listController">
+    <!-- 2.还希望在文本框输入时，遇到匹配的名字前缀，就会用红色标记，这里用数据模型 -->
+    <input type="text" ng-model="lastname">
+
+    <!-- 1.有重复的元素会报错，必须使用track by 唯一值，就选取每个元素的$index了。 -->
+    <ul ng-repeat="stu in student track by $index">
+        <!-- 3.用ng-class取这个lastname数据，看真实数据是不是以lastname开头，如果是，就能匹配红色 -->
+        <li ng-class="{red: stu.startsWith(lastname) && lastname != ''}">姓名：{{stu}}</li>
+        <!-- 并判断lastname不等于空是防止清空输入后，所有项都会变成空，因为stu.startsWith('')都是成立的 -->
+    </ul>
+
+</body>
+<script src="bower_components/angular/angular.js"></script>
+<script>
+    var myApp = angular.module('myApp', []);
+    myApp.controller('listController', ['$scope', function ($scope) {
+        $scope.student = ['张三', '李四', '李四', '王五'];
+        // 有重复的元素
+    }]);
+</script>
+</html>

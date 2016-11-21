@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-class绑定数据</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            transition: background-color 1s ease; /*颜色渐变*/
+        }
+        .red {
+            background: red;
+        }
+        .green {
+            background: green;
+        }
+    </style>
+</head>
+<body ng-app>
+    <!-- 下面的下拉框绑定了mystyle模型数据 -->
+    <select ng-model="mystyle" ng-init="mystyle='red'">
+        <option value="red">红色</option>
+        <option value="green">绿色</option>
+    </select>
+    <!-- 下面div的ng-class也和mystyle数据模型绑定 -->
+    <div ng-class="{red: mystyle == 'red', green: mystyle == 'green'}">
+
+    </div>
+</body>
+<script src="bower_components/angular/angular.js"></script>
+</html>

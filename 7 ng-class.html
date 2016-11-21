@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-class</title>
+    <!-- CSS -->
+    <style type="text/css">
+        div {
+            width: 100px;
+            height: 100px;
+            border: 1px black solid;
+        }
+        .red {
+            background: red;
+        }
+    </style>
+</head>
+<body ng-app>
+    <div ng-class="{red: true}">
+        <!-- red键的值为true，表示该div元素会添加red的类名，这样就能应用CSS样式了。 -->
+
+    </div>
+</body>
+<script src="bower_components/angular/angular.js"></script>
+</html>
