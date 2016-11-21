@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-src指令</title>
+</head>
+<body ng-app ng-init="url='1.jpg'">
+<!-- 初始化一个图片的路径 -->
+    <img src="{{url}}">
+    <a href="{{url}}">链接到图片</a>
+    <!-- 上面这样写，由于HTML先加载，是会报错的，因为HTML会自动请求资源，但是是请求不到{{url}}资源的，因此为了标准，用下面的指令 -->
+    <img ng-src="{{url}}">
+    <a ng-href="{{url}}">链接到图片</a>
+</body>
+<script src="bower_components/angular/angular.js"></script>
+</html>
