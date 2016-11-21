@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-repeat隔行变色</title>
+    <!-- CSS -->
+    <style type="text/css">
+        .red {
+            color: red;
+        }
+        .green {
+            color: green;
+        }
+    </style>
+</head>
+<body ng-app="mm" ng-controller="listController">
+<ul ng-repeat="stu in student">
+    <!-- 隔行变色利用$even/$odd，然后用CSS -->
+    <li class="{{$even ? 'red' : 'green'}}">
+        姓名：{{stu.name}} 年龄：{{stu.age}}
+    </li>
+</ul>
+
+</body>
+<script src="bower_components/angular/angular.js"></script>
+<script>
+    var mm = angular.module('mm', []);
+    mm.controller('listController', ['$scope', function ($scope) {
+        // 维护一个学生对象数组
+        $scope.student = [];
+        // 下面模拟数组的10个数据
+        for(var i = 1; i <= 10; i++){
+            // 下面也是添加数据的方法，即：arr[arr.length] = {对象}。在JS中可行。
+            $scope.student[$scope.student.length] = {
+                name: "张三" + i,
+                age: 10 + i
+            };
+        }
+    }]);
+</script>
+</html>

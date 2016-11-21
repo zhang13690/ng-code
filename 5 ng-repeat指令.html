@@ -7,7 +7,22 @@
 <body ng-app="mm" ng-controller="listController">
     <!-- ul里面显示数据, ul之前用控制器指令，ul中使用ng-repeat指令 -->
     <ul ng-repeat="stu in student">
-        <li>姓名：{{stu.name}} 年龄：{{stu.age}}</li>
+        <!-- ng-repeat指令会遍历数组中每个程序，并按照下面的格式创建内容。ng-repeat中用xx in xxx的语法，
+         然后在这里面，每个xx变量就是单个数组元素。可以用表达式获取。-->
+        <li>
+            姓名：{{stu.name}} 年龄：{{stu.age}}
+        <!-- 在Chrome中用AngularBatarang调试工具，可以看到，angular还自动为单个元素添加了以下属性，便于我们操作：
+            $id : 分配的编号(不定)
+            $index : 索引号(从0开始顺序的)
+            $first: 是否是第一个元素
+            $last : 是否是最后一个元素
+            $middle：元素不是头或尾元素
+            $even: 元素是偶数元素
+            $odd: 元素是奇数元素
+         -->
+            {{$first ? '这是第一个元素' : ''}}
+            {{$last ? '这是最后一个元素' : ''}}
+        </li>
     </ul>
 
 </body>
