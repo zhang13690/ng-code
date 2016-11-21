@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-switch</title>
+</head>
+<body ng-app ng-init="sel='1'">
+    <!-- 下拉框用于绑定数据模型的值sel -->
+    <select ng-model="sel">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="else">其他</option>
+    </select>
+    <div ng-switch="sel">
+        <div ng-switch-when="1">
+            你选择了1
+        </div>
+        <div ng-switch-when="2">
+            你选择了2
+        </div>
+        <div ng-switch-default>
+            其他选项
+        </div>
+    </div>
+</body>
+<script src="bower_components/angular/angular.js"></script>
+</html>
