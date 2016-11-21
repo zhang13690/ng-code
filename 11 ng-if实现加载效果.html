@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>实现加载效果</title>
+    <style>
+        /*CSS的加载遮挡层，这是一种新写法*/
+        .tips {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(100, 100, 100, .5);
+            font-size: 40px;
+            line-height: 100vh;
+            text-align: center;
+        }
+    </style>
+</head>
+<body ng-app="myApp" ng-controller="loadController">
+    <div>
+        这是网页的内容....
+    </div>
+    <div class="tips" ng-if="loading">
+        <!--这是加载的遮挡层-->
+        正在加载中 Loading...
+    </div>
+</body>
+<script src="bower_components/angular/angular.js"></script>
+<script>
+    var myApp = angular.module('myApp', []);
+    myApp.controller('loadController', ['$scope', '$timeout', function ($scope, $timeout) {
+        // 传递的$timeout就是Angular封装的定时器setTimeout对象，这里传递过来的。
+        $scope.loading = true; // 一开始设置loading为true，显示遮挡层
+        // 3秒后取消遮挡层
+        $timeout(function () {
+            $scope.loading = false;
+        }, 3000);
+    }]);
+    // 同样，使用ng-show或者ng-hide也能实现相同的效果。
+</script>
+</html>
