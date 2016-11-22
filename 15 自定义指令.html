@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令</title>
+    <!-- 引用bootstrap -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body ng-app="myApp">
+    <!-- 定义指令时用myBtn方式，但是使用指令时，用的是css风格，就是my-btn，Angnlar都是这样的。 -->
+    <my-btn></my-btn>
+</body>
+<script src="bower_components/angular/angular.js"></script>
+<script>
+    var myApp = angular.module('myApp', []);
+    // 在模块中定义指令
+    myApp.directive('myBtn', [function () {
+        // 该函数返回一个对象
+        return {
+            template: '<input type="button" value="MyBtn" class="btn btn-primary" />',
+            replace: true
+            // template表示模板，replace表示替换当前的标签，如果不写replace:true，那么就会保留my-btn标签。
+            // 这里还有其他参数，自行参见文档学习。
+        };
+    }]);
+</script>
+</html>
